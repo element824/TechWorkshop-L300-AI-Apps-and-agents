@@ -1,8 +1,11 @@
 
 FROM python:3.12-slim
 
-# Upgrade pip and system packages to reduce vulnerabilities
-RUN apt-get update && apt-get upgrade -y && pip install --upgrade pip && rm -rf /var/lib/apt/lists/*
+# Install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+# Upgrade system packages to reduce vulnerabilities
+RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
 
 # Set work directory
 WORKDIR /app
@@ -15,14 +18,11 @@ RUN apt-get update && apt-get install -y \
 
 # Copy requirements and install
 COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN uv pip install --system --no-cache -r requirements.txt
 
 
 # Copy the rest of the code
 COPY . .
-
-# Copy .env file into the image (for python-dotenv)
-COPY .env .env
 
 # Expose the port (default FastAPI/uvicorn port)
 EXPOSE 8000
@@ -31,4 +31,4 @@ EXPOSE 8000
 ENV PORT=8000
 
 # Start the FastAPI app
-CMD ["uvicorn", "chat_app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "chat_app:app", "--host", "0.0.0.0", "--port", "8000"]

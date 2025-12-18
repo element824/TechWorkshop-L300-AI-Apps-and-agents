@@ -1,0 +1,12 @@
+name: chat-app
+metadata:
+  template: chat-app-template
+
+services:
+  web:
+    project: ./src
+    language: python
+    host: appservice
+    docker:
+      path: ./Dockerfile
+      context: ./
