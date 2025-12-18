@@ -1,82 +1,8 @@
-# Environment files
-.env
-.env.*
-env_sample.txt
-
-# Python cache
 __pycache__/
-*.py[cod]
-*$py.class
 *.pyc
 *.pyo
 *.pyd
-*.so
-.Python
-
-# Virtual environments
-venv/
-env/
-ENV/
-.venv
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-*.cover
-.hypothesis/
-test_*.py
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-
-# Git
-.git/
-.gitignore
-.gitattributes
-
-# Documentation
-docs/
-README.md
-*.md
-LICENSE
-SUPPORT.md
-SECURITY.md
-
-# Build artifacts
-*.egg-info/
-dist/
-build/
-*.egg
-
-# Media files
-media/
-
-# Infrastructure and deployment
-infra/
-workflows/
-pipelines/
-
-# Configuration
-parameters.json
-_config.yml
-Gemfile
-pyproject.toml
-
-# Data files (if not needed in container)
-data/custom_attack_prompts.json
-data/LivingRoomImage-Attribution.txt
-data/updated_product_catalog(in).csv
-
-# Jupyter
-*.ipynb_checkpoints
-*.ipynb
-
-# Logs
 *.log
-logs/
+__pycache__/
+data/
+venv/
